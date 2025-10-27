@@ -10,3 +10,4 @@ export * from './RenderCard';
 export * from './RenderTopBar';
 export * from './RenderScaffold';
 export * from './RenderTable';
+export * from './RenderLazyColumn';

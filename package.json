@@ -1,6 +1,6 @@
 {
   "name": "ssr-simple",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A lightweight React library that converts JSON into native Material-UI components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

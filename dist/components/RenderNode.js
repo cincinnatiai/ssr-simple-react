@@ -17,6 +17,7 @@ const RenderButton_1 = require("./RenderButton");
 const RenderImage_1 = require("./RenderImage");
 const RenderTable_1 = require("./RenderTable");
 const RenderSpacer_1 = require("./RenderSpacer");
+const RenderLazyColumn_1 = require("./RenderLazyColumn");
 const RenderNode = ({ node, onAction = () => { } }) => {
     switch (node.type) {
         case 'Scaffold':
@@ -29,6 +30,8 @@ const RenderNode = ({ node, onAction = () => { } }) => {
             return react_1.default.createElement(RenderRow_1.RenderRow, { node: node, onAction: onAction });
         case 'Box':
             return react_1.default.createElement(RenderBox_1.RenderBox, { node: node, onAction: onAction });
+        case 'LazyColumn':
+            return react_1.default.createElement(RenderLazyColumn_1.RenderLazyColumn, { node: node, onAction: onAction });
         case 'Card':
             return react_1.default.createElement(RenderCard_1.RenderCard, { node: node, onAction: onAction });
         case 'Text':

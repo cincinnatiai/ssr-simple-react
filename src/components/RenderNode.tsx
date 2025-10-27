@@ -12,6 +12,7 @@ import { RenderButton } from './RenderButton';
 import { RenderImage } from './RenderImage';
 import { RenderTable } from './RenderTable';
 import { RenderSpacer } from './RenderSpacer';
+import { RenderLazyColumn } from './RenderLazyColumn';
 
 export interface RenderNodeProps {
   node: NodeModel;
@@ -30,6 +31,8 @@ export const RenderNode: React.FC<RenderNodeProps> = ({ node, onAction = () => {
       return <RenderRow node={node} onAction={onAction} />;
     case 'Box':
       return <RenderBox node={node} onAction={onAction} />;
+    case 'LazyColumn':
+      return <RenderLazyColumn node={node} onAction={onAction} />;
     case 'Card':
       return <RenderCard node={node} onAction={onAction} />;
     case 'Text':

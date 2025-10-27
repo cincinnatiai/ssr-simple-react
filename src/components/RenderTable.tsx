@@ -17,7 +17,7 @@ export interface RenderTableProps {
 }
 
 export const RenderTable: React.FC<RenderTableProps> = ({ node, onAction = () => {} }) => {
-  const { columns = [], tableData = [], showBorders, headerBackgroundColor, rowAction, roundedCorners } = node;
+  const { columns = [], tableData = [], showBorders, headerBackgroundColor, rowAction, roundedCorners, useLazyColumn = true } = node;
 
   const getAlignment = (align?: string): 'left' | 'center' | 'right' | 'inherit' => {
     if (align === 'start' || align === 'left') return 'left';
@@ -42,9 +42,12 @@ export const RenderTable: React.FC<RenderTableProps> = ({ node, onAction = () =>
       sx={{
         ...modifierToSx(node.modifier),
         borderRadius: roundedCorners ? `${roundedCorners}px` : undefined,
+        // Enable scrolling for table body when useLazyColumn is true
+        maxHeight: useLazyColumn ? '500px' : undefined,
+        overflow: useLazyColumn ? 'auto' : undefined,
       }}
     >
-      <Table size="small">
+      <Table size="small" stickyHeader={useLazyColumn}>
         <TableHead>
           <TableRow>
             {columns.map((column, colIndex) => (

@@ -8,7 +8,7 @@ const react_1 = __importDefault(require("react"));
 const material_1 = require("@mui/material");
 const utils_1 = require("../utils");
 const RenderTable = ({ node, onAction = () => { } }) => {
-    const { columns = [], tableData = [], showBorders, headerBackgroundColor, rowAction, roundedCorners } = node;
+    const { columns = [], tableData = [], showBorders, headerBackgroundColor, rowAction, roundedCorners, useLazyColumn = true } = node;
     const getAlignment = (align) => {
         if (align === 'start' || align === 'left')
             return 'left';
@@ -30,8 +30,11 @@ const RenderTable = ({ node, onAction = () => { } }) => {
     return (react_1.default.createElement(material_1.TableContainer, { component: material_1.Paper, variant: showBorders ? 'outlined' : 'elevation', sx: {
             ...(0, utils_1.modifierToSx)(node.modifier),
             borderRadius: roundedCorners ? `${roundedCorners}px` : undefined,
+            // Enable scrolling for table body when useLazyColumn is true
+            maxHeight: useLazyColumn ? '500px' : undefined,
+            overflow: useLazyColumn ? 'auto' : undefined,
         } },
-        react_1.default.createElement(material_1.Table, { size: "small" },
+        react_1.default.createElement(material_1.Table, { size: "small", stickyHeader: useLazyColumn },
             react_1.default.createElement(material_1.TableHead, null,
                 react_1.default.createElement(material_1.TableRow, null, columns.map((column, colIndex) => (react_1.default.createElement(material_1.TableCell, { key: colIndex, align: getAlignment(column.horizontalAlignment), sx: {
                         backgroundColor: headerBackgroundColor,
